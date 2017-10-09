@@ -1,7 +1,7 @@
-import Emitter from './Emitter'
+import PPEEmitter from './PPEEmitter'
 import { createImageFromBitmapData } from './utils'
 
-export default class Particle {
+export default class PPEParticle {
   constructor (game, parent, particleData = null) {
     this.game = game
     this._parent = parent
@@ -39,6 +39,7 @@ export default class Particle {
 
   set emitX (x) {
     this._emitX = x
+    // eslint-disable-next-line no-unused-vars
     for (let [key, emitter] of this._emitersMap) {
       emitter.emitX = emitter.properties.emitX + this.emitX
     }
@@ -50,6 +51,7 @@ export default class Particle {
 
   set emitY (y) {
     this._emitY = y
+    // eslint-disable-next-line no-unused-vars
     for (let [key, emitter] of this._emitersMap) {
       emitter.emitY = emitter.properties.emitY + this.emitY
     }
@@ -67,7 +69,7 @@ export default class Particle {
   }
 
   _createEmitter (name, properties) {
-    return new Emitter(this.game, name, properties)
+    return new PPEEmitter(this.game, name, properties)
   }
 
   _add (child, silent, index) {
@@ -111,7 +113,7 @@ export default class Particle {
   }
 
   addEmitter (name, properties, autoEmit = true) {
-    createImageFromBitmapData(properties[name], name, () => {
+    createImageFromBitmapData(this.game, properties[name], name, () => {
       const emitter = this._createEmitter(name, properties)
       this._add(emitter)
       emitter.makeParticles(emitter.name, properties.frames, 500, properties.collide, properties.collideWorldBounds)
@@ -132,7 +134,8 @@ export default class Particle {
   }
 
   updateEmitterImage (name, properties) {
-    createImageFromBitmapData(properties[name], name, this._onEmitterImageUpdate.bind(this, name, properties))
+    createImageFromBitmapData(this.game, properties[name], name,
+      this._onEmitterImageUpdate.bind(this, name, properties))
   }
 
   updateEmitterProperties (name, properties) {

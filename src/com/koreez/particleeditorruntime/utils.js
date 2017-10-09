@@ -1,10 +1,10 @@
-export const createImageFromBitmapData = (bitmapData, key, oncreate, onerror) => {
+export const createImageFromBitmapData = (game, bitmapData, key, oncreate, onerror) => {
   // eslint-disable-next-line no-undef
   const data = new Image()
   data.src = bitmapData
   //
   data.onload = () => {
-    window.sandbox.cache.addImage(key, bitmapData, data)
+    game.cache.addImage(key, bitmapData, data)
     oncreate()
   }
   data.onerror = () => {

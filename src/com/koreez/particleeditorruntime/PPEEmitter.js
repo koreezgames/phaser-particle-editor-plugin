@@ -1,6 +1,5 @@
-import Phaser from 'phaser'
-
-export default class Emitter extends Phaser.Particles.Arcade.Emitter {
+/* eslint-disable no-undef */
+export default class PPEEmitter extends Phaser.Particles.Arcade.Emitter {
   constructor (game, name, properties) {
     super(game, properties.emitX, properties.emitY, properties.maxParticles)
     this.name = name

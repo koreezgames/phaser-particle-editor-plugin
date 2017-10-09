@@ -1,6 +1,6 @@
 {
   "name": "phaser-particle-editor-runtime",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Phaser Particle Editor runtime",
   "main": "lib/library.js",
   "scripts": {
@@ -26,13 +26,9 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "expose-loader": "^0.7.3",
     "webpack": "^3.6.0",
     "webpack-config": "^7.4.0"
   },
   "author": "Koreez LLC <hello@koreez.com>",
-  "license": "MIT",
-  "dependencies": {
-    "phaser-ce": "^2.8.8"
-  }
+  "license": "MIT"
 }
