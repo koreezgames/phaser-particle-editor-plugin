@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-export default class PPEEmitter extends Phaser.Particles.Arcade.Emitter {
+// eslint-disable-next-line no-undef
+export default class Emitter extends Phaser.Particles.Arcade.Emitter {
   constructor (game, name, properties) {
     super(game, properties.emitX, properties.emitY, properties.maxParticles)
     this.name = name
@@ -15,12 +15,14 @@ export default class PPEEmitter extends Phaser.Particles.Arcade.Emitter {
     this.emitY = properties.emitY
     this.maxParticles = properties.maxParticles
     this.setAlpha(properties.alphaMin, properties.alphaMax, properties.alphaRate,
+      // eslint-disable-next-line no-undef
       Phaser.Easing[properties.alphaEase][properties.alphaEaseMode], properties.alphaYoyo)
     if (properties.proportional) {
       this.minParticleScale = properties.minScale
       this.maxParticleScale = properties.maxScale
     } else {
       this.setScale(properties.scaleFromX, properties.scaleToX, properties.scaleFromY,
+        // eslint-disable-next-line no-undef
         properties.scaleToY, properties.scaleRate, Phaser.Easing[properties.scaleEase][properties.scaleEaseMode],
         properties.scaleYoyo)
     }

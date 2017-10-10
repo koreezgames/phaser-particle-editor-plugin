@@ -1,36 +1,18 @@
-import PPEEmitter from './PPEEmitter'
+import Emitter from './Emitter'
 import { createImageFromBitmapData } from './utils'
 
-export default class PPEParticle {
-  constructor (game, parent, particleData = null) {
-    this.game = game
-    this._parent = parent
-    this._parentUpdate = this._parent.update.bind(this._parent)
-    this._parent.update = this._update.bind(this)
+// eslint-disable-next-line no-undef
+export default class Particle extends Phaser.Group {
+  constructor (game, particleData, x, y) {
+    super(game)
+    this.x = x
+    this.y = y
     this._emitersMap = new Map()
     this._collidebleEmitters = new Set()
     this._emitX = 0
     this._emitY = 0
     this._arcade = this.game.physics.arcade
-    if (particleData !== null) {
-      this._initEmitters(particleData)
-    }
-  }
-
-  get x () {
-    return this._parent.x
-  }
-
-  set x (x) {
-    this._parent.x = x
-  }
-
-  get y () {
-    return this._parent.y
-  }
-
-  set y (y) {
-    this._parent.y = y
+    this._initEmitters(particleData)
   }
 
   get emitX () {
@@ -69,16 +51,16 @@ export default class PPEParticle {
   }
 
   _createEmitter (name, properties) {
-    return new PPEEmitter(this.game, name, properties)
+    return new Emitter(this.game, name, properties)
   }
 
-  _add (child, silent, index) {
-    this._parent.add(child, silent, index)
+  add (child, silent, index) {
+    super.add(child, silent, index)
     this._emitersMap.set(child.name, child)
   }
 
-  _remove (child, destroy, silent) {
-    this._parent.remove(child, destroy, silent)
+  remove (child, destroy, silent) {
+    super.remove(child, destroy, silent)
     this._emitersMap.delete(child.name)
   }
 
@@ -96,8 +78,8 @@ export default class PPEParticle {
     }
   }
 
-  _update () {
-    this._parentUpdate()
+  update () {
+    super.update()
     for (const emitter of this._collidebleEmitters) {
       this._arcade.collide(emitter)
     }
@@ -115,7 +97,7 @@ export default class PPEParticle {
   addEmitter (name, properties, autoEmit = true) {
     createImageFromBitmapData(this.game, properties[name], name, () => {
       const emitter = this._createEmitter(name, properties)
-      this._add(emitter)
+      this.add(emitter)
       emitter.makeParticles(emitter.name, properties.frames, 500, properties.collide, properties.collideWorldBounds)
       this.updateEmitterProperties(name, properties)
       if (autoEmit) {
@@ -130,7 +112,7 @@ export default class PPEParticle {
   }
 
   removeEmitter (name) {
-    this._remove(this._emitersMap.get(name))
+    this.remove(this._emitersMap.get(name))
   }
 
   updateEmitterImage (name, properties) {

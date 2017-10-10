@@ -1,7 +1,7 @@
-import PPEParticle from './com/koreez/particleeditorruntime/PPEParticle'
-import { createImageFromBitmapData } from './com/koreez/particleeditorruntime/utils'
+import ParticleEditorPlugin from './com/koreez/particleeditorplugin/ParticleEditorPlugin'
+import { createImageFromBitmapData } from './com/koreez/particleeditorplugin/utils'
 
 export {
-  PPEParticle,
+  ParticleEditorPlugin,
   createImageFromBitmapData
 }
