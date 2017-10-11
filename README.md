@@ -14,7 +14,7 @@ npm install @koreez/phaser-particle-editor-plugin --save
 ```
 Usage
 -----
-#### Import the plugin
+### Import the plugin
 ##### ***in ES5***
 ```javascript
 var PhaserParticleEditor = require('@koreez/phaser-particle-editor-plugin')
@@ -35,7 +35,7 @@ The plugin will patch your Phaser game with additional *add / make* methods so t
 //  x - any
 //  y - any
 //  data - can be allready loaded JSON key or existing object based on Particle Editor JSON data
-// group - parent container
+//  group - parent container
 game.add.particle(x, y, data, group)
 // or
 game.make.particle(x, y, data)
