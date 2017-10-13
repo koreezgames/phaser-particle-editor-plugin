@@ -1,3 +1,5 @@
+language: node_js
+sudo: required
 script:
   - npm run build
 node_js:
