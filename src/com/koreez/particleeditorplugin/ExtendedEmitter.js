@@ -1,8 +1,12 @@
 // eslint-disable-next-line no-undef
-export default class Emitter extends Phaser.Particles.Arcade.Emitter {
+import ExtendedParticle from './ExtendedParticle'
+
+// eslint-disable-next-line no-undef
+export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
   constructor (game, name, properties) {
     super(game, properties.emitX, properties.emitY, properties.maxParticles)
     this.name = name
+    this.particleClass = ExtendedParticle
     this.applyProperties(properties)
   }
 
@@ -36,5 +40,14 @@ export default class Emitter extends Phaser.Particles.Arcade.Emitter {
     if (!properties.explode) {
       this.on = properties.enabled
     }
+  }
+
+  resetParticle (particle, x, y) {
+    if (this.properties.particleArguments && this.properties.particleArguments.hasOwnProperty('color')) {
+      const color = this.properties.particleArguments.color
+      // eslint-disable-next-line no-undef
+      particle.tint = Phaser.Color.getColor32(particle.alpha, color.start.r, color.start.g, color.start.b)
+    }
+    super.resetParticle(particle, x, y)
   }
 }

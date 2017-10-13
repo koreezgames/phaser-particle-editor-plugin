@@ -1,8 +1,8 @@
-import Emitter from './Emitter'
+import ExtendedEmitter from './ExtendedEmitter'
 import { createImageFromBitmapData } from './utils'
 
 // eslint-disable-next-line no-undef
-export default class Particle extends Phaser.Group {
+export default class ParticleEffect extends Phaser.Group {
   constructor (game, particleData, x, y) {
     super(game)
     this.x = x
@@ -51,7 +51,7 @@ export default class Particle extends Phaser.Group {
   }
 
   _createEmitter (name, properties) {
-    return new Emitter(this.game, name, properties)
+    return new ExtendedEmitter(this.game, name, properties)
   }
 
   add (child, silent, index) {
@@ -98,7 +98,7 @@ export default class Particle extends Phaser.Group {
     createImageFromBitmapData(this.game, properties[name], name, () => {
       const emitter = this._createEmitter(name, properties)
       this.add(emitter)
-      emitter.makeParticles(emitter.name, properties.frames, 500, properties.collide, properties.collideWorldBounds)
+      emitter.makeParticles(emitter.name, properties.frames, 500, properties.collide, properties.collideWorldBounds, properties.particleArguments)
       this.updateEmitterProperties(name, properties)
       if (autoEmit) {
         this._emit(emitter, properties)
