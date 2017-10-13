@@ -11,7 +11,7 @@ deploy:
   provider: npm
   skip_cleanup: true
   on:
-    branch: master
+    tags: true
   email: sargsyan.sargis.89@gmail.com
   api_key:
     secure: JWT0giaYTQNqjZe+IiqyEt3Ek4p4UTI62mPOVrC7jYEeq0OS+VArSxHxOAeJVuwR42WKKfVHnSn8YhqkFsVz2btRdOmQMvg6Mqhsxv8VC7p7wHk1QBKksaHcIn5llEoSgA9+ATYLmRT3/Ipv0kXzUBhuEkWqF8r9Yz5PDLnO/czKNig7a5Uv0ZWGbalfFr7wtkbm9ryZx3fTlGItrrVVX8YnpsP0tHRbN3AXnaii+XT1ZcQf616FyKYJIk+Ws+HpoW0I9nxz51nOQRSatKeeD/OvLjRkDHri5TTh8Qc34p0nMMxAZfNoPiE/riZK93MI1SqifmkGiBaYVudu8pftfQeaTFo31LNI7fMkgLuy3LrWhB3sFXqvL61BHR57cGAdyp8axwacr8PgKmKuY8jjsgNGbUGqLleex7a1vIFV3I9Q4lnXbRMuE7XGD6DYrGhvXmc3ilVZpQL4klELmxHJmt1FQiqJKiHAcWgp3/FN4tUDsyEC9hNfnw8MPTzkp91RHXgnmpN10hiaF9fA8ivJtYLbHONlP0diDKwPDElawln0HLVYknkrmJytiQq2EEzP895Yf6ff0WrjOtAmDV+CWgoig8YNTxVDZphNGkOTV4HUZkBxpBF/aWN+vYM8wsXFcR9Uwo4vbkAlElzk/AfLBjufVrcrDxgxNUhdDRpe8JM=
