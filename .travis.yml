@@ -1,7 +1,12 @@
+script:
+  - npm run build
+node_js:
+  - '8'
 deploy:
   provider: npm
+  skip_cleanup: true
+  on:
+    tags: true
   email: sargsyan.sargis.89@gmail.com
   api_key:
     secure: BMZoLh4ww6ByeYRYNdIxBHWP8ZEwpVPBOrBHUyksz2dbzZkGnjRkEDh7KopBJm++4QrLy5ZfcSypKyMrcEPC7uWJvoJa8+hiAChiOxi0nIWu5/p9EdjhzLMv3VHVwsLfXQpq7SeP+eXdBLKwJekqp7lpR9yz4kHmlJU7zW/pTFlxMpTkPozwVwe6hVKuQwA5m5n4Ppp8yqw2YR2H2U3Qzt7JKkvwS0dJRnxKS3m1+O0u0vOq/2+Ul3thOjO+P1lzB/qwnQ0vIrS/7uA7Lbg7atxuFk4NDEQtQsCMHdlbYR1v4Vnn9s5PaNk4dZ5NXm02OFQMRmu5ktbLvjk9taEweYNNj1X0yFF17MpiMI4wqgKznO/gOlfdPvsLRfxMSGFZ5VYyxSY4pbgBYMULDohmKfLLPSaxfRvACaTkLKJ/q2TTVByUWib6mDwNONLIbPRIMlNvc7BITlJfrIR6CTUMsb9hYxl2OIdmqtzcSE03O6LR5963W7ltEXkPDLjzs7O2WlwTkEWSS5Ff6ohiHWe0TiudRfXYV1uTCkcLOdN+4bsKlRLPPd5T/6DRObwtjhJDlZrKVIQF7/t45WZkTjnylvtJnv/nJQwh8ChF9/2uQqqEJyyPqZdLzojCPXkdxZc2MmSQiq7kbh483bmFJSDgkAYj9i6nhQCW1u9n/QkYYl8=
-  on:
-    tags: true
