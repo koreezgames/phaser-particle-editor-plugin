@@ -32,16 +32,16 @@ game.plugins.add(PhaserParticleEditor);
 The plugin will patch your Phaser game with additional *add / make* methods so this plugin fits up in Phaser like any normal object.
 ### Create particles
 ```javascript
-//  x - any
-//  y - any
-//  data - can be allready loaded JSON key or existing object based on Particle Editor JSON data
-//  group - parent container
-game.add.particle(x, y, data, group)
+// x - any
+// y - any
+// data - should be already loaded JSON key or existing object based on Particle Editor data
+// group - parent container
+game.add.particleEffect(x, y, data, group)
 // or
-game.make.particle(x, y, data)
+game.make.particleEffect(x, y, data)
 ```
 
 ## News & Community
-We have a [forum](#) so you can always be up to date with latest news!
+We have a [forum](http://www.html5gamedevs.com/topic/33387-phaser-particle-editor/) so you can always be up to date with latest news!
 ## Contributing
 Coming soon!
