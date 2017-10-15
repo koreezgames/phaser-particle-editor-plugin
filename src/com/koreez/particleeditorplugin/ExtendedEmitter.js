@@ -23,11 +23,10 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
     this.setAlpha(properties.alphaMin, properties.alphaMax, properties.alphaRate,
       // eslint-disable-next-line no-undef
       Phaser.Easing[properties.alphaEase][properties.alphaEaseMode], properties.alphaYoyo)
-    if (properties.proportional) {
+    if (properties.randomScale) {
       this.minParticleScale = properties.minScale
       this.maxParticleScale = properties.maxScale
     } else {
-      console.log('applyProperties : scaleRate=' + properties.scaleRate)
       this.setScale(properties.scaleFromX, properties.scaleToX, properties.scaleFromY,
         // eslint-disable-next-line no-undef
         properties.scaleToY, properties.scaleRate, Phaser.Easing[properties.scaleEase][properties.scaleEaseMode],
