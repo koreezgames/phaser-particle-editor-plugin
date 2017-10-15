@@ -18,6 +18,8 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
     this.emitX = properties.emitX
     this.emitY = properties.emitY
     this.maxParticles = properties.maxParticles
+    // eslint-disable-next-line no-undef
+    this.blendMode = properties.blendMode
     this.setAlpha(properties.alphaMin, properties.alphaMax, properties.alphaRate,
       // eslint-disable-next-line no-undef
       Phaser.Easing[properties.alphaEase][properties.alphaEaseMode], properties.alphaYoyo)
@@ -25,10 +27,12 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
       this.minParticleScale = properties.minScale
       this.maxParticleScale = properties.maxScale
     } else {
+      console.log('applyProperties : scaleRate=' + properties.scaleRate)
       this.setScale(properties.scaleFromX, properties.scaleToX, properties.scaleFromY,
         // eslint-disable-next-line no-undef
         properties.scaleToY, properties.scaleRate, Phaser.Easing[properties.scaleEase][properties.scaleEaseMode],
-        properties.scaleYoyo)
+        properties.scaleYoyo
+      )
     }
     this.minParticleSpeed.setTo(properties.minSpeedX, properties.minSpeedY)
     this.maxParticleSpeed.setTo(properties.maxSpeedX, properties.maxSpeedY)
