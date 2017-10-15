@@ -9,12 +9,12 @@ export default class ParticleEditorPlugin extends Phaser.Plugin {
 
   addParticleFactory () {
     // eslint-disable-next-line no-undef
-    Phaser.GameObjectFactory.prototype.particle = (x, y, key, group) => {
+    Phaser.GameObjectFactory.prototype.particleEffect = (x, y, key, group) => {
       const particle = new ParticleEffect(this.game, this.getData(key), x, y)
       return (group || this.game.world).add(particle)
     }
     // eslint-disable-next-line no-undef
-    Phaser.GameObjectCreator.prototype.particle = (x, y, key) => {
+    Phaser.GameObjectCreator.prototype.particleEffect = (x, y, key) => {
       return new ParticleEffect(this.game, x, y, this.getData(key))
     }
   }

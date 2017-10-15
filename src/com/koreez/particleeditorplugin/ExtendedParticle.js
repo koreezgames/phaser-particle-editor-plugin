@@ -19,6 +19,7 @@ export default class ExtendedParticle extends Phaser.Particle {
           true, colorArguments.delay)
 
       tween.onUpdateCallback(this.updateColor.bind(this))
+      tween.onComplete.add(this.onTweenComplete, this)
     }
     super.onEmit()
   }
@@ -28,5 +29,9 @@ export default class ExtendedParticle extends Phaser.Particle {
     Phaser.Color.updateColor(tween.target)
     // eslint-disable-next-line no-undef
     this.tint = Phaser.Color.getColor32(this.alpha, tween.target.r, tween.target.g, tween.target.b)
+  }
+
+  onTweenComplete (tween) {
+    this.game.tweens.remove(tween)
   }
 }
