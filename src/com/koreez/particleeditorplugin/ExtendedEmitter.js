@@ -46,11 +46,19 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
   }
 
   resetParticle (particle, x, y) {
-    if (this.properties.particleArguments && this.properties.particleArguments.hasOwnProperty('color')) {
+    super.resetParticle(particle, x, y)
+    if (this.properties.particleArguments.hasOwnProperty('color')) {
       const color = this.properties.particleArguments.color
       // eslint-disable-next-line no-undef
       particle.tint = Phaser.Color.getColor32(particle.alpha, color.start.r, color.start.g, color.start.b)
     }
-    super.resetParticle(particle, x, y)
+    if (this.properties.particleArguments.hasOwnProperty('startRotation')) {
+      const startRotation = this.properties.particleArguments.startRotation
+      particle.angle = this.game.rnd.integerInRange(startRotation.min, startRotation.max)
+    }
+    if (this.properties.particleArguments.hasOwnProperty('anchor')) {
+      const anchor = this.properties.particleArguments.anchor
+      particle.anchor.setTo(anchor.x, anchor.y)
+    }
   }
 }
