@@ -2,9 +2,11 @@
   "name": "@koreez/phaser-particle-editor-plugin",
   "version": "1.0.0-alpha.11",
   "description": "Phaser Particle Editor Plugin",
-  "main": "lib/library.js",
+  "main": "dist/plugin.js",
   "scripts": {
-    "build": "webpack --config webpack.production.config.babel.js",
+    "build": "concurrently --kill-others \"npm run build-umd\" \"npm run build-var\"",
+    "build-umd": "webpack --config webpack.production-target-umd.config.babel.js",
+    "build-var": "webpack --config webpack.production-target-var.config.babel.js",
     "dev": "webpack --config webpack.development.config.babel.js"
   },
   "repository": {
@@ -19,6 +21,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "concurrently": "^3.5.0",
     "eslint": "^4.9.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
@@ -26,6 +29,7 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "phaser-ce": "^2.9.1",
     "webpack": "^3.7.1",
     "webpack-config": "^7.4.0"
   },

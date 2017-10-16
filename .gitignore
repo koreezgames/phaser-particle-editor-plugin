@@ -30,4 +30,5 @@ node_modules
 .idea
 .vscode
 .DS_Store
-lib
+/lib/
+/dist/

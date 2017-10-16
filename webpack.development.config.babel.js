@@ -7,7 +7,6 @@ import { libraryName } from './webpack.base.config'
 export default new Config().extend({
   'webpack.base.config.js': config => {
     config.output.filename = libraryName + '.js'
-    console.log(config)
     return config
   }
 }).merge({

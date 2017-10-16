@@ -1,7 +1,6 @@
-// eslint-disable-next-line no-undef
+import Phaser from 'phaser'
 import ExtendedParticle from './ExtendedParticle'
 
-// eslint-disable-next-line no-undef
 export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
   constructor (game, name, properties) {
     super(game, properties.emitX, properties.emitY, properties.maxParticles)
@@ -18,17 +17,14 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
     this.emitX = properties.emitX
     this.emitY = properties.emitY
     this.maxParticles = properties.maxParticles
-    // eslint-disable-next-line no-undef
     this.blendMode = properties.blendMode
     this.setAlpha(properties.alphaMin, properties.alphaMax, properties.alphaRate,
-      // eslint-disable-next-line no-undef
       Phaser.Easing[properties.alphaEase][properties.alphaEaseMode], properties.alphaYoyo)
     if (properties.randomScale) {
       this.minParticleScale = properties.minScale
       this.maxParticleScale = properties.maxScale
     } else {
       this.setScale(properties.scaleFromX, properties.scaleToX, properties.scaleFromY,
-        // eslint-disable-next-line no-undef
         properties.scaleToY, properties.scaleRate, Phaser.Easing[properties.scaleEase][properties.scaleEaseMode],
         properties.scaleYoyo
       )
@@ -49,7 +45,6 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
     super.resetParticle(particle, x, y)
     if (this.properties.particleArguments.hasOwnProperty('color')) {
       const color = this.properties.particleArguments.color
-      // eslint-disable-next-line no-undef
       particle.tint = Phaser.Color.getColor32(particle.alpha, color.start.r, color.start.g, color.start.b)
     }
     if (this.properties.particleArguments.hasOwnProperty('startRotation')) {
