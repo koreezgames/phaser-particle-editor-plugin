@@ -17,17 +17,17 @@ Usage
 ### Import the plugin
 ##### ***in ES5***
 ```javascript
-var PhaserParticleEditor = require('@koreez/phaser-particle-editor-plugin')
+var ParticleEditorPlugin = require('@koreez/phaser-particle-editor-plugin')
 ```
 ##### ***in ES6***
 ```javascript
-import { PhaserParticleEditor } from '@koreez/phaser-particle-editor-plugin'
+import { ParticleEditorPlugin } from '@koreez/phaser-particle-editor-plugin'
 ```
 ### Load the plugin
 You need to load the plugin in your game. This is done just like any other plugin in Phaser.
 So, to load the plugin, include it one of the Phaser States.
 ```javascript
-game.plugins.add(PhaserParticleEditor);
+game.plugins.add(ParticleEditorPlugin);
 ```
 The plugin will patch your Phaser game with additional *add / make* methods so this plugin fits up in Phaser like any normal object.
 ### Create particles
