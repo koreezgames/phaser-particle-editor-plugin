@@ -55,5 +55,7 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
       const anchor = this.properties.particleArguments.anchor
       particle.anchor.setTo(anchor.x, anchor.y)
     }
+    const lifespan = this.properties.particleArguments.lifespan
+    particle.lifespan = this.game.rnd.integerInRange(lifespan.min, lifespan.max)
   }
 }
