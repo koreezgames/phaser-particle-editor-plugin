@@ -5,8 +5,7 @@ import { libraryName } from './webpack.base.config'
 export default new Config().extend('webpack.development.config.babel.js').merge({
   output: {
     pathinfo: false,
-    library: libraryName,
-    libraryTarget: 'umd',
+    filename: `${libraryName}.min.js`,
     umdNamedDefine: true
   },
   plugins: [
