@@ -1,6 +1,6 @@
 {
   "name": "@koreez/phaser-particle-editor-plugin",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "Phaser Particle Editor Plugin",
   "main": "dist/library.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "expose-loader": "^0.7.3",
-    "webpack": "^3.7.1",
+    "webpack": "^3.8.0",
     "webpack-config": "^7.5.0"
   },
   "author": "Koreez LLC <hello@koreez.com>",
