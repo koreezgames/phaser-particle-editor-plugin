@@ -1,7 +1,7 @@
 import ExtendedEmitter from './ExtendedEmitter'
 import { createImageFromBitmapData } from './utils'
+import Phaser from 'phaser'
 
-// eslint-disable-next-line no-undef
 export default class ParticleEffect extends Phaser.Group {
   constructor (game, particleData, x, y) {
     super(game)
@@ -69,11 +69,9 @@ export default class ParticleEffect extends Phaser.Group {
       return
     }
     if (properties.flow) {
-      // flow function (lifespan, frequency, quantity, total, immediate)
       emitter.flow(properties.lifespan, properties.frequency, properties.quantity, properties.total,
         properties.immediate)
     } else {
-      // start function (explode, lifespan, frequency, total)
       emitter.start(properties.explode, properties.lifespan, properties.frequency, properties.total)
     }
   }

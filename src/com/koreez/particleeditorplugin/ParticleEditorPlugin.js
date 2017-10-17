@@ -1,6 +1,6 @@
 import ParticleEffect from './ParticleEffect'
+import Phaser from 'phaser'
 
-// eslint-disable-next-line no-undef
 export default class ParticleEditorPlugin extends Phaser.Plugin {
   constructor (game, parent) {
     super(game, parent)
@@ -8,12 +8,10 @@ export default class ParticleEditorPlugin extends Phaser.Plugin {
   }
 
   addParticleFactory () {
-    // eslint-disable-next-line no-undef
     Phaser.GameObjectFactory.prototype.particleEffect = (x, y, key, group) => {
       const particle = new ParticleEffect(this.game, this.getData(key), x, y)
       return (group || this.game.world).add(particle)
     }
-    // eslint-disable-next-line no-undef
     Phaser.GameObjectCreator.prototype.particleEffect = (x, y, key) => {
       return new ParticleEffect(this.game, x, y, this.getData(key))
     }
