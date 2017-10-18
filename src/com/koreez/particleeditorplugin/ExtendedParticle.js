@@ -3,19 +3,19 @@ import Phaser from 'phaser'
 export default class ExtendedParticle extends Phaser.Particle {
   constructor (game, x, y, key, frame, particleArguments) {
     super(game, x, y, key, frame)
-    this.particleArguments = particleArguments
+    this.particleArgumentsColor = particleArguments['color'] || null
   }
 
   onEmit () {
-    if (this.particleArguments && this.particleArguments.hasOwnProperty('color')) {
-      const colorArguments = this.particleArguments.color
-
-      const startColor = Phaser.Color.createColor(colorArguments.start.r, colorArguments.start.g,
-        colorArguments.start.b)
+    if (this.particleArgumentsColor) {
+      const startColor = Phaser.Color.createColor(this.particleArgumentsColor.start.r,
+        this.particleArgumentsColor.start.g,
+        this.particleArgumentsColor.start.b)
 
       const tween = this.game.add.tween(startColor)
-        .to(colorArguments.end, colorArguments.rate, Phaser.Easing[colorArguments.ease][colorArguments.easeMode],
-          true, colorArguments.delay)
+        .to(this.particleArgumentsColor.end, this.particleArgumentsColor.rate,
+          Phaser.Easing[this.particleArgumentsColor.ease][this.particleArgumentsColor.easeMode],
+          true, this.particleArgumentsColor.delay)
 
       tween.onUpdateCallback(this.updateColor.bind(this))
       tween.onComplete.add(this.onTweenComplete, this)

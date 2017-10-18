@@ -39,23 +39,26 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
     if (!properties.explode) {
       this.on = properties.enabled
     }
+    this.particleArgumentsColor = this.properties.particleArguments['color'] || null
+    this.particleArgumentsStartRotation = this.properties.particleArguments['startRotation'] || null
+    this.particleArgumentsAnchor = this.properties.particleArguments['anchor'] || null
+    this.particleArgumentsLifespan = this.properties.particleArguments['lifespan']
   }
 
   resetParticle (particle, x, y) {
     super.resetParticle(particle, x, y)
-    if (this.properties.particleArguments.hasOwnProperty('color')) {
-      const color = this.properties.particleArguments.color
-      particle.tint = Phaser.Color.getColor32(particle.alpha, color.start.r, color.start.g, color.start.b)
+    if (this.particleArgumentsColor) {
+      particle.tint = Phaser.Color.getColor32(particle.alpha, this.particleArgumentsColor.start.r,
+        this.particleArgumentsColor.start.g, this.particleArgumentsColor.start.b)
     }
-    if (this.properties.particleArguments.hasOwnProperty('startRotation')) {
-      const startRotation = this.properties.particleArguments.startRotation
-      particle.angle = this.game.rnd.integerInRange(startRotation.min, startRotation.max)
+    if (this.particleArgumentsStartRotation) {
+      particle.angle = this.game.rnd.integerInRange(this.particleArgumentsStartRotation.min,
+        this.particleArgumentsStartRotation.max)
     }
-    if (this.properties.particleArguments.hasOwnProperty('anchor')) {
-      const anchor = this.properties.particleArguments.anchor
-      particle.anchor.setTo(anchor.x, anchor.y)
+    if (this.particleArgumentsAnchor) {
+      particle.anchor.setTo(this.particleArgumentsAnchor.x, this.particleArgumentsAnchor.y)
     }
-    const lifespan = this.properties.particleArguments.lifespan
-    particle.lifespan = this.game.rnd.integerInRange(lifespan.min, lifespan.max)
+    particle.lifespan = this.game.rnd.integerInRange(this.particleArgumentsLifespan.min,
+      this.particleArgumentsLifespan.max)
   }
 }

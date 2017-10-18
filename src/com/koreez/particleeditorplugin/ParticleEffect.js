@@ -69,10 +69,10 @@ export default class ParticleEffect extends Phaser.Group {
       return
     }
     if (properties.flow) {
-      emitter.flow(properties.lifespan, properties.frequency, properties.quantity, properties.total,
+      emitter.flow(0, properties.frequency, properties.quantity, properties.total,
         properties.immediate)
     } else {
-      emitter.start(properties.explode, properties.lifespan, properties.frequency, properties.total)
+      emitter.start(properties.explode, 0, properties.frequency, properties.total)
     }
   }
 
@@ -96,7 +96,7 @@ export default class ParticleEffect extends Phaser.Group {
     createImageFromBitmapData(this.game, properties[name], name, () => {
       const emitter = this._createEmitter(name, properties)
       this.add(emitter)
-      emitter.makeParticles(emitter.name, properties.frames, properties.makeParticles, properties.collide,
+      emitter.makeParticles(emitter.name, properties.frames, properties.maxParticles, properties.collide,
         properties.collideWorldBounds, properties.particleArguments)
       this.updateEmitterProperties(name, properties)
       if (autoEmit) {
