@@ -83,6 +83,13 @@ export default class ParticleEffect extends Phaser.Group {
     }
   }
 
+  emit () {
+    // eslint-disable-next-line no-unused-vars
+    for (let [key, emitter] of this._emitersMap) {
+      this._emit(emitter, emitter.properties)
+    }
+  }
+
   _onEmitterImageUpdate (name, properties) {
     this._recreateEmitter(name, properties)
   }

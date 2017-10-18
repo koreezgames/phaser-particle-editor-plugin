@@ -13,7 +13,7 @@ export default class ParticleEditorPlugin extends Phaser.Plugin {
       return (group || this.game.world).add(particle)
     }
     Phaser.GameObjectCreator.prototype.particleEffect = (x, y, key) => {
-      return new ParticleEffect(this.game, x, y, this.getData(key))
+      return new ParticleEffect(this.game, this.getData(key), x, y)
     }
   }
 
