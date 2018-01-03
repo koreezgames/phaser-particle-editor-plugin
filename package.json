@@ -4,11 +4,9 @@
   "description": "Phaser Particle Editor Plugin",
   "main": "dist/library.js",
   "scripts": {
-    "build": "concurrently 'npm run dev' 'npm run build-var' 'npm run build-umd'",
-    "build-umd": "webpack --config webpack.production-target-umd.config.babel.js",
-    "build-var": "webpack --config webpack.production-target-var.config.babel.js",
-    "dev": "webpack --config webpack.development.config.babel.js",
-    "dev-local": "concurrently 'npm run dev' 'npm run build-umd'"
+    "build": "concurrently 'npm run build-var' 'npm run build-umd'",
+    "build-umd": "webpack --config config/webpack.config.js --env umd",
+    "build-var": "webpack --config config/webpack.config.js --env var"
   },
   "repository": {
     "type": "git",
@@ -16,27 +14,29 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "concurrently": "^3.5.0",
-    "eslint": "^4.9.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "case-sensitive-paths-webpack-plugin": "^2.1.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "concurrently": "^3.5.1",
+    "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.2.0",
+    "eslint-config-standard-trailing-commas": "^6.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "expose-loader": "^0.7.3",
-    "webpack": "^3.8.1",
-    "webpack-config": "^7.5.0"
+    "expose-loader": "^0.7.4",
+    "git-revision-webpack-plugin": "^2.5.1",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1"
   },
   "author": "Koreez LLC <hello@koreez.com>",
   "license": "MIT",
   "dependencies": {
-    "phaser-ce": "^2.9.1"
+    "phaser-ce": "^2.9.4"
   }
 }

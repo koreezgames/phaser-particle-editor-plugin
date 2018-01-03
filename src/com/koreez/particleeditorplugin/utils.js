@@ -1,4 +1,11 @@
-export const createImageFromBitmapData = (game, bitmapData, key, oncreate, onerror, force = true) => {
+export const createImageFromBitmapData = (
+  game,
+  bitmapData,
+  key,
+  oncreate,
+  onerror,
+  force = true,
+) => {
   if (!force && game.cache.checkImageKey(key)) {
     oncreate()
     return
