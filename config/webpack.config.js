@@ -30,10 +30,11 @@ const libConfig = merge([
     },
     output: {
       path: paths.dist,
+      libraryExport: 'default',
     },
     resolve: {
       alias: {
-        'phaser': paths.phaser,
+        phaser: paths.phaser,
       },
       modules: [path.resolve('./node_modules'), path.resolve('./src')],
       extensions: ['.json', '.js'],
@@ -78,7 +79,7 @@ const varConfig = merge([
       umdNamedDefine: false,
     },
     externals: {
-      'phaser': 'Phaser',
+      phaser: 'Phaser',
     },
   },
 ])
@@ -93,9 +94,9 @@ const umdConfig = merge([
     },
     externals: {
       phaser: {
-        commonjs: 'phaser',
-        commonjs2: 'phaser',
-        amd: 'phaser',
+        commonjs: 'Phaser',
+        commonjs2: 'Phaser',
+        amd: 'Phaser',
         root: 'Phaser',
       },
     },
@@ -103,10 +104,6 @@ const umdConfig = merge([
 ])
 
 module.exports = env => {
-  const config = merge(
-    libConfig,
-    env === 'var' ? varConfig : umdConfig
-  )
-
+  const config = merge(libConfig, env === 'var' ? varConfig : umdConfig)
   return config
 }

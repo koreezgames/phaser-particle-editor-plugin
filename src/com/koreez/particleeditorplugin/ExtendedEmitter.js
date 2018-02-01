@@ -2,14 +2,14 @@ import Phaser from 'phaser'
 import ExtendedParticle from './ExtendedParticle'
 
 export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
-  constructor(game, name, properties) {
+  constructor (game, name, properties) {
     super(game, properties.emitX, properties.emitY, properties.maxParticles)
     this.name = name
     this.particleClass = ExtendedParticle
     this.applyProperties(properties)
   }
 
-  applyProperties(properties) {
+  applyProperties (properties) {
     this.properties = properties
     this.gravity.x = properties.gravityX
     this.gravity.y = properties.gravityY
@@ -60,7 +60,7 @@ export default class ExtendedEmitter extends Phaser.Particles.Arcade.Emitter {
     ]
   }
 
-  resetParticle(particle, x, y) {
+  resetParticle (particle, x, y) {
     super.resetParticle(particle, x, y)
     if (this.particleArgumentsColor) {
       particle.tint = Phaser.Color.getColor32(
