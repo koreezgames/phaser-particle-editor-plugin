@@ -1,12 +1,12 @@
 import Phaser from 'phaser'
 
 export default class ExtendedParticle extends Phaser.Particle {
-  constructor(game, x, y, key, frame, particleArguments) {
+  constructor (game, x, y, key, frame, particleArguments) {
     super(game, x, y, key, frame)
     this.particleArgumentsColor = particleArguments['color'] || null
   }
 
-  onEmit() {
+  onEmit () {
     if (this.particleArgumentsColor) {
       const startColor = Phaser.Color.createColor(
         this.particleArgumentsColor.start.r,
@@ -32,7 +32,7 @@ export default class ExtendedParticle extends Phaser.Particle {
     super.onEmit()
   }
 
-  updateColor(tween) {
+  updateColor (tween) {
     Phaser.Color.updateColor(tween.target)
     this.tint = Phaser.Color.getColor32(
       this.alpha,
@@ -42,7 +42,7 @@ export default class ExtendedParticle extends Phaser.Particle {
     )
   }
 
-  onTweenComplete(tween) {
+  onTweenComplete (tween) {
     this.game.tweens.remove(tween)
   }
 }
