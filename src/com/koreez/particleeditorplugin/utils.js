@@ -1,3 +1,7 @@
+const imageData = {}
+imageData.isLoading = false
+imageData.queue = []
+
 export const createImageFromBitmapData = (
   game,
   bitmapData,
@@ -6,21 +10,62 @@ export const createImageFromBitmapData = (
   onerror,
   force = true,
 ) => {
+  console.log(
+    `createImageFromBitmapData ${key} | force : ${force} | cache : ${game.cache.checkImageKey(
+      key,
+    )}`,
+  )
+
   if (!force && game.cache.checkImageKey(key)) {
-    oncreate()
+    onImageLoad(oncreate)
     return
   }
-  // eslint-disable-next-line no-undef
-  const data = new Image()
-  data.src = bitmapData
-  //
-  data.onload = () => {
-    game.cache.addImage(key, bitmapData, data)
-    oncreate()
+
+  const img = new Image()
+
+  if (imageData.isLoading) {
+    imageData.queue.push({
+      game,
+      bitmapData,
+      key,
+      oncreate,
+      onerror,
+    })
+    return
   }
-  data.onerror = () => {
-    if (onerror) {
-      onerror()
-    }
+  imageData.isLoading = true
+  //
+  img.onload = () => {
+    game.cache.addImage(key, bitmapData, img)
+    onImageLoad(oncreate)
+  }
+
+  img.onerror = () => {
+    onImageLoad(onerror)
+  }
+
+  // eslint-disable-next-line no-undef
+  img.src = bitmapData
+}
+
+const onImageLoad = hook => {
+  if (hook) {
+    hook()
+  }
+  imageData.isLoading = false
+  nextImageInQueue()
+}
+
+const nextImageInQueue = () => {
+  if (imageData.queue.length > 0) {
+    const queueData = imageData.queue.shift()
+    createImageFromBitmapData(
+      queueData.game,
+      queueData.bitmapData,
+      queueData.key,
+      queueData.oncreate,
+      queueData.onerror,
+      false,
+    )
   }
 }
