@@ -94,9 +94,9 @@ const umdConfig = merge([
     },
     externals: {
       phaser: {
-        commonjs: 'Phaser',
-        commonjs2: 'Phaser',
-        amd: 'Phaser',
+        commonjs: 'phaser-ce',
+        commonjs2: 'phaser-ce',
+        amd: 'phaser-ce',
         root: 'Phaser',
       },
     },
