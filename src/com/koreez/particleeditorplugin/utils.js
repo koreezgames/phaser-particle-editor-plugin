@@ -10,12 +10,6 @@ export const createImageFromBitmapData = (
   onerror,
   force = true,
 ) => {
-  console.log(
-    `createImageFromBitmapData ${key} | force : ${force} | cache : ${game.cache.checkImageKey(
-      key,
-    )}`,
-  )
-
   if (!force && game.cache.checkImageKey(key)) {
     onImageLoad(oncreate)
     return
